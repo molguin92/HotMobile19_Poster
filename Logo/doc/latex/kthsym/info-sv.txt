@@ -1,0 +1,2 @@
+<li><a href="kthsym/kthsym.pdf">KTH-symbolen, symbolen för Skolan för
+    datavetenskap och kommunikation, samt den gamla Nada-symbolen</a>.
