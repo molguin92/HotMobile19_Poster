@@ -9,138 +9,20 @@
 %   Manuel Olguín October 2018
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<<<<<<< HEAD
-\documentclass[portrait, a0]{KTHEEposter}
-=======
 \documentclass[portrait, a1]{KTHEEposter}
->>>>>>> init writing
 \usepackage{lipsum}
 \usepackage{listings}
 \usepackage{enumitem}
 \usepackage{caption}
-<<<<<<< HEAD
-\lstset{basicstyle=\ttfamily, frame=single}
-
-\kthlogo{kth_eng_cmyk}
-%\extralogo{kth_eng_cmyk}
-=======
 \usepackage{indentfirst}
 \lstset{basicstyle=\ttfamily, frame=single}
 
 \kthlogo{kth_eng_cmyk}
 \extralogo{img/cmu_csd_logo}
->>>>>>> init writing
 \kthcolor{KTHblue}
 
 \begin{document}
     
-<<<<<<< HEAD
-    \title{KTH Royal Institute of Technology\\Poster Template}
-    
-    \author{Mats Bengtsson, Manuel Olguín}
-    \maketitle
-
-    % begin poster columns:
-    \begin{pcolumns}[3] % optional argument is the number of columns, by default it's 2
-        \begin{pcolumn}[4] % optional argument is the number of frames in the column, by default 2
-            \begin{pframe}[1.15] % optional argument indicates the scaling of the frame size. Sum of this for all frames in a column should be equal to the number of frames!
-                The KTHEEposter class provides helper functions to easily set up posters which follow the KTH visual style.
-                In particular it provides the following environments:
-                \begin{itemize}
-                    \item To initialize a column environment with pretty frames:
-                    \begin{lstlisting}
-\begin{pcolumns}[<# of cols>]
-... 
-\end{pcolumns}
-                    \end{lstlisting}
-                    
-                    \item To set up a column inside a column environment:
-                    \begin{lstlisting}
-\begin{pcolumn}[<# of frames>]
-...
-\end{pcolumn}
-                    \end{lstlisting}
-                
-            
-                    \item And then environments to set up frames\dots
-                \end{itemize}
-            \end{pframe}
-            \begin{pframe}[.35] % frame with border and shadow
-                \dots \textbf{with border and shadow:}
-                \begin{lstlisting}
-\begin{pframe}[<scale>]
-...
-\end{pframe}
-                \end{lstlisting}
-            \end{pframe}
-            \begin{pframe*}[.35] % frame with border, no shadow
-                \dots \textbf{with border but no shadow:}
-                \begin{lstlisting}
-\begin{pframe*}[<scale>]
-...
-\end{pframe*}
-                \end{lstlisting}
-            \end{pframe*}
-            \begin{pframe**}[.35] % frame with no border, no shadow
-                \dots \textbf{no border and no shadow:}
-                \begin{lstlisting}
-\begin{pframe**}[<scale>]
-...
-\end{pframe**}
-                \end{lstlisting}
-            \end{pframe**}
-        \end{pcolumn}%
-        \begin{pcolumn}[3]
-            \begin{pframe}[.7]
-                The class also provides easy options for changing the colors of the frames.
-                Simply invoke the \texttt{\textbackslash kthcolor\{\}} command in your preamble with one of two color options:
-                \begin{itemize}
-                    \item \texttt{KTHblue} for the standard KTH blue color on the frames.
-                    \item \texttt{KTHred} for the alternative KTH red color.
-                \end{itemize}
-                \medskip
-                If you want to insert an alternative logo instead of the default KTH logo on the right side of the title, use the \texttt{\textbackslash extralogo\{\}} command, passing the desired image as a parameter.
-            \end{pframe}
-            \begin{pframe}[.2]
-                See the source code for this template (\texttt{template.tex}) and for the class itself (\texttt{KTHEEposter.cls}) for more details.
-            \end{pframe}
-            \begin{pframe}[2.1]
-                Of course, you can add arbitrary \LaTeX~code inside the frames, with the exception of floats (figures, etc).
-                One solution is to use the \texttt{caption} package to add correct captions inside a minipage (see source code):
-                
-                \vskip 20mm
-                
-                \begin{minipage}{\linewidth}
-                    \centering
-                    \includegraphics[width=.7\linewidth]{Logo/kth_eng_cmyk}
-                    \captionof{figure}{KTH Logo}
-                \end{minipage}
-            \end{pframe}
-        \end{pcolumn}%
-        \begin{pcolumn}[3]
-            \begin{pframe**}[1]
-            \end{pframe**}
-            \begin{pframe}[.5]
-                The KTHEEposter document class was originally created by Mats Bengtsson in 2002, who also updated it in 2014.
-                This new version by Manuel Olguín, created in 2018, builds upon Mats' implementation and modernizes it a bit.
-                Some functionality of the old class has not yet been implemented though, in particular the arrows between frames.
-                This will be re-added in the near future!
-            \end{pframe}
-            \begin{pframe}[1.5]
-                \section{Changelog}
-                \begin{description}
-                    \item[8 October 2018] Reimplement using tcolorbox. 
-                    Add options to change colors. 
-                    General reformatting of the class. M. Olguín.
-                    \item[2 April 2014] Add latest version of the KTH logo. M. Bengtsson.
-                    \item[July 2012] Renewed layout, reimplemented using tikz instead of pstricks, added possibility to add extra logotype. M. Bengtsson.
-                    \item[7 August 2006] Renamed to KTHEEposter and modified to adhere somewhat more to the graphical profile. M. Bengtsson.
-                    \item[28 May 2002] Original version. M. Bengtsson.
-                \end{description}
-            \end{pframe}
-        \end{pcolumn}%
-    \end{pcolumns}%
-=======
     \title{\LARGE\bfseries Scaling on the Edge:\\A Benchmarking Suite For Human-in-the-Loop Applications}
     
     \author{\Large M. Olguín, J. Wang, M. Satyanarayanan, J. Gross}
@@ -160,6 +42,5 @@
             \end{pframe}
         \end{pcolumn}
     \end{pcolumns}
->>>>>>> init writing
     
 \end{document}
