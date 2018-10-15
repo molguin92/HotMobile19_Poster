@@ -9,13 +9,23 @@
 %   Manuel Olguín October 2018
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\PassOptionsToPackage{showframe}{geometry}
 \documentclass[portrait, a1]{KTHEEposter}
 \usepackage{lipsum}
 \usepackage{listings}
 \usepackage{enumitem}
 \usepackage{caption}
+\usepackage{subcaption}
+\captionsetup{font=normalsize,labelfont={bf,sf}}
+\captionsetup[sub]{font={small}, textfont={normalfont}, labelfont={bf,sf}}
 \usepackage{indentfirst}
 \lstset{basicstyle=\ttfamily, frame=single}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.14}
+\usepackage[export]{adjustbox}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows.meta,positioning,automata}
+\usepackage{sourcecodepro}
 
 \kthlogo{kth_eng_cmyk}
 \extralogo{img/cmu_csd_logo}
@@ -30,16 +40,52 @@
     
     \begin{pcolumns}[3]
         \begin{pcolumn}[2]
-            \begin{pframe}
+            \begin{pframe}[.68]
+                \section{Abstract}
                 Benchmarking human-in-the-loop application is complex given their nature, which heavily depends on the actions taken by the \emph{human} user.
                 This limits reproducibility as well as feasibility of performance evaluations.
-                In this paper we propose a methodology and present a benchmarking suite we call EdgeDroid  that can address these challenges.
+                We propose a methodology and present a benchmarking suite we call EdgeDroid  that can address these challenges.
                 Our core idea rests on recording traces of these applications which are played out in a controlled fashion based on an underlying model of human behavior.
                 The traces are then exposed to the original backend compute process of the respective human-in-the-loop application, generating realistic feedback.
                 This allows for an automated system which greatly simplifies benchmarking large scale scenarios.
-                After presenting this methodology and implementation, we demonstrate the approach on an example cognitive assistance application.
-                The results show the utility of EdgeDroid as a tool for system designers, application developers and researchers alike.
             \end{pframe}
+            \begin{pframe}[1.32]
+                \section{Design \& Implementation}
+                \begin{center}
+                    \includegraphics[width=\linewidth]{img/TraceReplay_GenArch}
+                    \captionof{figure}{EdgeDroid Architecture}
+                \end{center}
+                
+                The architecture of our benchmarking suite consists of two main components:
+                \begin{itemize}
+                    \item The \emph{control backend}, which controls the experiments and collects measurements from the application and the client emulators.
+                    \item The \emph{client emulators}, which play out a prerecorded sensory input trace over the network in a controlled fashion.
+                \end{itemize}
+                
+            \end{pframe}
+        \end{pcolumn}%
+        \begin{pcolumn}[3]
+            \begin{pframe}[.9]
+                \begin{center}
+                    \input{img/usermodel.tex}
+                    \captionof{figure}{Simple user model used for the initial iteration of the suite.}
+                \end{center}
+            \end{pframe}            
+        \end{pcolumn}%
+        \begin{pcolumn}[2]
+            \begin{pframe}
+                \section{Some Example Results}
+                \begin{center}
+                    \includegraphics[width=\linewidth]{plots/comparison/box_legend.pdf}
+                    \includegraphics[width=\linewidth]{plots/comparison/box_feedback.pdf}
+                    \captionof{subfigure}{Inputs that triggered feedback.}
+                    \includegraphics[width=\linewidth]{plots/comparison/box_nofeedback.pdf}
+                    \captionof{subfigure}{Inputs that did not trigger feedback.}
+                    \captionof{figure}{Comparison of latencies for a series of scenarios, differentiated by feedback/lack of feedback.}
+                \end{center}
+            \end{pframe}
+            \begin{pframe**}
+            \end{pframe**}
         \end{pcolumn}
     \end{pcolumns}
     
