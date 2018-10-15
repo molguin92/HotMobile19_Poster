@@ -9,19 +9,32 @@
 %   Manuel Olguín October 2018
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<<<<<<< HEAD
 \documentclass[portrait, a0]{KTHEEposter}
+=======
+\documentclass[portrait, a1]{KTHEEposter}
+>>>>>>> init writing
 \usepackage{lipsum}
 \usepackage{listings}
 \usepackage{enumitem}
 \usepackage{caption}
+<<<<<<< HEAD
 \lstset{basicstyle=\ttfamily, frame=single}
 
 \kthlogo{kth_eng_cmyk}
 %\extralogo{kth_eng_cmyk}
+=======
+\usepackage{indentfirst}
+\lstset{basicstyle=\ttfamily, frame=single}
+
+\kthlogo{kth_eng_cmyk}
+\extralogo{img/cmu_csd_logo}
+>>>>>>> init writing
 \kthcolor{KTHblue}
 
 \begin{document}
     
+<<<<<<< HEAD
     \title{KTH Royal Institute of Technology\\Poster Template}
     
     \author{Mats Bengtsson, Manuel Olguín}
@@ -127,5 +140,26 @@
             \end{pframe}
         \end{pcolumn}%
     \end{pcolumns}%
+=======
+    \title{\LARGE\bfseries Scaling on the Edge:\\A Benchmarking Suite For Human-in-the-Loop Applications}
+    
+    \author{\Large M. Olguín, J. Wang, M. Satyanarayanan, J. Gross}
+    \maketitle
+    
+    \begin{pcolumns}[3]
+        \begin{pcolumn}[2]
+            \begin{pframe}
+                Benchmarking human-in-the-loop application is complex given their nature, which heavily depends on the actions taken by the \emph{human} user.
+                This limits reproducibility as well as feasibility of performance evaluations.
+                In this paper we propose a methodology and present a benchmarking suite we call EdgeDroid  that can address these challenges.
+                Our core idea rests on recording traces of these applications which are played out in a controlled fashion based on an underlying model of human behavior.
+                The traces are then exposed to the original backend compute process of the respective human-in-the-loop application, generating realistic feedback.
+                This allows for an automated system which greatly simplifies benchmarking large scale scenarios.
+                After presenting this methodology and implementation, we demonstrate the approach on an example cognitive assistance application.
+                The results show the utility of EdgeDroid as a tool for system designers, application developers and researchers alike.
+            \end{pframe}
+        \end{pcolumn}
+    \end{pcolumns}
+>>>>>>> init writing
     
 \end{document}
