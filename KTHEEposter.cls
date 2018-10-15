@@ -129,6 +129,8 @@
                 opacityback=1.0, 
                 opacitybacktitle=1.0, 
                 opacityframe=1.0,
+                %parbox=false,
+                before upper={\parindent15pt},
                 shadow={20mm}{-20mm}{0mm}{black!50!white},
                 borderline={20pt}{-20pt}{\kthc@l@r}]%
                 %\fontsize{35}{43}\normalfont%
@@ -144,6 +146,8 @@
                 opacityback=1.0, 
                 opacitybacktitle=1.0, 
                 opacityframe=1.0,
+                %parbox=false,
+                before upper={\parindent15pt},
                 %shadow={20mm}{-20mm}{0mm}{black!50!white},
                 borderline={20pt}{-20pt}{\kthc@l@r}]%
                 %\fontsize{35}{43}\normalfont%
@@ -159,6 +163,8 @@
                 opacityback=1.0, 
                 opacitybacktitle=1.0, 
                 opacityframe=0.0,
+                %parbox=false,
+                before upper={\parindent15pt}
                 %shadow={20mm}{-20mm}{0mm}{black!50!white},
                 %borderline={20pt}{-20pt}{\kthc@l@r}]%
                 ]
