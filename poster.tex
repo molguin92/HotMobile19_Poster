@@ -9,7 +9,7 @@
 %   Manuel Olguín October 2018
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\PassOptionsToPackage{showframe}{geometry}
+%\PassOptionsToPackage{showframe}{geometry}
 \documentclass[portrait, a1]{KTHEEposter}
 \usepackage{lipsum}
 \usepackage{listings}
@@ -26,6 +26,16 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows.meta,positioning,automata}
 \usepackage{sourcecodepro}
+\usepackage{todonotes}
+
+\usepackage[style=ieee,
+backend=bibtex,
+sorting=none,
+sortcites,
+maxcitenames=2, mincitenames=1]{biblatex}
+\AtBeginBibliography{\small}
+\addbibresource{bibliography.bib}
+
 
 \kthlogo{kth_eng_cmyk}
 \extralogo{img/cmu_csd_logo}
@@ -40,7 +50,7 @@
     
     \begin{pcolumns}[3]
         \begin{pcolumn}[2]
-            \begin{pframe}[.68]
+            \begin{pframe}[.67]
                 \section{Abstract}
                 Benchmarking human-in-the-loop application is complex given their nature, which heavily depends on the actions taken by the \emph{human} user.
                 This limits reproducibility as well as feasibility of performance evaluations.
@@ -49,42 +59,76 @@
                 The traces are then exposed to the original backend compute process of the respective human-in-the-loop application, generating realistic feedback.
                 This allows for an automated system which greatly simplifies benchmarking large scale scenarios.
             \end{pframe}
-            \begin{pframe}[1.32]
+            \begin{pframe}[1.33]
+                \section{Basic Idea}
+                \begin{itemize}
+                    \item Benchmarking human-in-the-loop applications is \textbf{hard} due to \emph{human} users:
+                    \begin{itemize}
+                        \item They are unpredictable.
+                        \item They make scaling difficult (you need more of them!).
+                    \end{itemize}
+                    \item What if we could cut out the user?
+                \end{itemize}
+                \medskip
+                \begin{center}
+                    \medskip
+                    \includegraphics[width=.8\linewidth]{img/trace_idea_1}
+                    \medskip
+                    \includegraphics{img/trace_idea_arrow}
+                    \medskip
+                    \includegraphics[width=.8\linewidth]{img/trace_idea_2}
+                    \captionof{figure}{Basic idea is to replace the user by a pre-recorded sensory input trace played through a simple user model.}
+                \end{center}
+                
+            \end{pframe}
+        \end{pcolumn}%
+        \begin{pcolumn}[2]
+            \begin{pframe}[1]
                 \section{Design \& Implementation}
                 \begin{center}
+                    \medskip
                     \includegraphics[width=\linewidth]{img/TraceReplay_GenArch}
                     \captionof{figure}{EdgeDroid Architecture}
+                    \medskip
                 \end{center}
                 
                 The architecture of our benchmarking suite consists of two main components:
                 \begin{itemize}
-                    \item The \emph{control backend}, which controls the experiments and collects measurements from the application and the client emulators.
-                    \item The \emph{client emulators}, which play out a prerecorded sensory input trace over the network in a controlled fashion.
+                    \item The \emph{control backend} controls the experiments and collects measurements from the application and the cloudlet itself.
+                    \item The \emph{client emulators} play out a prerecorded sensory input trace over the network in a controlled fashion, while collecting client-side metrics.
                 \end{itemize}
-                
             \end{pframe}
-        \end{pcolumn}%
-        \begin{pcolumn}[3]
-            \begin{pframe}[.9]
+            \begin{pframe}[1]
                 \begin{center}
+                    \medskip
                     \input{img/usermodel.tex}
                     \captionof{figure}{Simple user model used for the initial iteration of the suite.}
+                    \medskip
                 \end{center}
+            
+                \todo[inline]{Brief description of user model.}
             \end{pframe}            
         \end{pcolumn}%
         \begin{pcolumn}[2]
-            \begin{pframe}
+            \begin{pframe}[1.3]
                 \section{Some Example Results}
                 \begin{center}
+                    \medskip
                     \includegraphics[width=\linewidth]{plots/comparison/box_legend.pdf}
                     \includegraphics[width=\linewidth]{plots/comparison/box_feedback.pdf}
                     \captionof{subfigure}{Inputs that triggered feedback.}
+                    \medskip
                     \includegraphics[width=\linewidth]{plots/comparison/box_nofeedback.pdf}
                     \captionof{subfigure}{Inputs that did not trigger feedback.}
-                    \captionof{figure}{Comparison of latencies for a series of scenarios, differentiated by feedback/lack of feedback.}
+                    \captionof{figure}{Comparison of the latency distributions across system components for a series of scenarios, differentiated by feedback/lack of feedback.}
+                    \medskip
                 \end{center}
+            
+                 These results could be useful for, for instance, system designers wishing to identify bottlenecks across the system hardware stack, or for application developers to determine points of optimization in the application code.
             \end{pframe}
             \begin{pframe**}
+                \todo[inline]{Some references here for good measure.}
+                \printbibliography
             \end{pframe**}
         \end{pcolumn}
     \end{pcolumns}
