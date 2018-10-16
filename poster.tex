@@ -82,8 +82,8 @@ maxcitenames=2, mincitenames=1]{biblatex}
                 
             \end{pframe}
         \end{pcolumn}%
-        \begin{pcolumn}[2]
-            \begin{pframe}[1]
+        \begin{pcolumn}[3]
+            \begin{pframe}[1.4]
                 \section{Design \& Implementation}
                 \begin{center}
                     \medskip
@@ -98,19 +98,24 @@ maxcitenames=2, mincitenames=1]{biblatex}
                     \item The \emph{client emulators} play out a prerecorded sensory input trace over the network in a controlled fashion, while collecting client-side metrics.
                 \end{itemize}
             \end{pframe}
-            \begin{pframe}[1]
+            \begin{pframe}[1.36]
                 \begin{center}
                     \medskip
                     \input{img/usermodel.tex}
                     \captionof{figure}{Simple user model used for the initial iteration of the suite.}
                     \medskip
                 \end{center}
-            
-                \todo[inline]{Brief description of user model.}
+                The trace alone is not enough to sufficiently emulate a human user.
+                We implement thus a very simple user model in order to be able to react to feedback from the application and adapt our replay of the trace to the current system conditions.
+                We plan to fully parameterize the components of this model in the future, in order to be able to construct more realistic user models.
+            \end{pframe}
+            \begin{pframe}[.24]
+                We will eventually make the EdgeDroid suite available as Free and Open Source Software.
+                The traces will also be made available under Creative Commons.
             \end{pframe}            
         \end{pcolumn}%
         \begin{pcolumn}[2]
-            \begin{pframe}[1.3]
+            \begin{pframe}[1.27]
                 \section{Some Example Results}
                 \begin{center}
                     \medskip
@@ -127,7 +132,8 @@ maxcitenames=2, mincitenames=1]{biblatex}
                  These results could be useful for, for instance, system designers wishing to identify bottlenecks across the system hardware stack, or for application developers to determine points of optimization in the application code.
             \end{pframe}
             \begin{pframe**}
-                \todo[inline]{Some references here for good measure.}
+                \nocite{*}
+                \small
                 \printbibliography
             \end{pframe**}
         \end{pcolumn}
