@@ -56,7 +56,7 @@ maxcitenames=2, mincitenames=1]{biblatex}
                 This limits reproducibility as well as feasibility of performance evaluations.
                 We propose a methodology and present a benchmarking suite that can address these challenges.
                 Our core idea rests on recording traces of these applications which are played out in a controlled fashion based on an underlying model of human behavior.
-                The traces are then exposed to the original backend compute process of the respective human-in-the-loop application, generating realistic feedback.
+                The traces are exposed to the original backend compute process of the respective human-in-the-loop application, generating realistic feedback.
                 This allows for an automated system which greatly simplifies benchmarking large scale scenarios.
             \end{pframe}
             \begin{pframe}[1.33]
@@ -96,11 +96,12 @@ maxcitenames=2, mincitenames=1]{biblatex}
                     \item The \emph{control backend} controls the experiments and collects measurements from the application and the cloudlet itself.
                     \item The \emph{client emulators} play out a prerecorded sensory input trace over the network in a controlled fashion, while collecting client-side metrics.
                 \end{itemize}
-            
+                \medskip
                 The client emulators in particular will be showcased in the \textsc{demo}.
                 We will demonstrate the workings of the system on a simple LEGO task assistance application, and spectators will be able to follow the replay of the trace as well as the behavior of the user model through the client devices.
             \end{pframe}
             \begin{pframe}[.9]
+                \smallskip
                 \begin{center}
                     \medskip
                     \input{img/usermodel.tex}
@@ -131,6 +132,7 @@ maxcitenames=2, mincitenames=1]{biblatex}
             \end{pframe}
             \begin{pframe}[.24]
                 \itshape
+                \smallskip
                 We will eventually make the benchmark suite available as Free and Open Source Software.
                 The traces will also be made available under a Creative Commons License.
             \end{pframe}    
