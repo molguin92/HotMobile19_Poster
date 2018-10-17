@@ -27,12 +27,16 @@
 \usetikzlibrary{shapes,arrows.meta,positioning,automata}
 \usepackage{sourcecodepro}
 \usepackage{todonotes}
+\usepackage{wrapfig}
 
 \usepackage[style=ieee,
 backend=bibtex,
 sorting=none,
 sortcites,
-maxcitenames=2, mincitenames=1]{biblatex}
+maxbibnames=1,
+minbibnames=1,
+maxcitenames=2, 
+mincitenames=1]{biblatex}
 \AtBeginBibliography{\footnotesize}
 \addbibresource{bibliography.bib}
 
@@ -52,7 +56,7 @@ maxcitenames=2, mincitenames=1]{biblatex}
         \begin{pcolumn}[2]
             \begin{pframe}[.67]
                 \section{Abstract}
-                Benchmarking human-in-the-loop application is complex given their nature, which heavily depends on the actions taken by the \emph{human} user.
+                Benchmarking human-in-the-loop application running on edge computing infrastructure is complex given their nature, which heavily depends on the actions taken by the \emph{human} user.
                 This limits reproducibility as well as feasibility of performance evaluations.
                 We propose a methodology and present a benchmarking suite that can address these challenges.
                 Our core idea rests on recording traces of these applications which are played out in a controlled fashion based on an underlying model of human behavior.
@@ -82,25 +86,21 @@ maxcitenames=2, mincitenames=1]{biblatex}
                 
             \end{pframe}
         \end{pcolumn}%
-        \begin{pcolumn}[2]
-            \begin{pframe}[1.1]
+        \begin{pcolumn}[3]
+            \begin{pframe}[1.2]
                 \section{Design \& Implementation}
                 \begin{center}
                     \medskip
-                    \includegraphics[width=\linewidth]{img/TraceReplay_GenArch}
+                    \includegraphics[width=.85\linewidth]{img/TraceReplay_GenArch}
                     \captionof{figure}{Suite Architecture}
                     \medskip
                 \end{center}
-
                 \begin{itemize}
                     \item The \emph{control backend} controls the experiments and collects measurements from the application and the cloudlet itself.
                     \item The \emph{client emulators} play out a prerecorded sensory input trace over the network in a controlled fashion, while collecting client-side metrics.
                 \end{itemize}
-                \medskip
-                The client emulators in particular will be showcased in the \textsc{demo}.
-                We will demonstrate the workings of the system on a simple LEGO task assistance application, and spectators will be able to follow the replay of the trace as well as the behavior of the user model through the client devices.
-            \end{pframe}
-            \begin{pframe}[.9]
+            \end{pframe}%
+            \begin{pframe}[1.13]
                 \smallskip
                 \begin{center}
                     \medskip
@@ -108,13 +108,22 @@ maxcitenames=2, mincitenames=1]{biblatex}
                     \captionof{figure}{Simple user model used for the initial iteration of the suite.}
                     \medskip
                 \end{center}
-                The trace alone is not enough to sufficiently emulate a human user.
-                We implement thus a very simple user model in order to be able to react to feedback from the application and adapt our replay of the trace to the current system conditions.
-                We plan to fully parameterize the components of this model in the future, in order to be able to construct more realistic user models.
-            \end{pframe}        
+                %The trace alone is not enough to sufficiently emulate a human user.
+                We implement a very simple user model in order to be able to react to feedback from the application and adapt our replay of the trace to the current system conditions.
+                %We plan to fully parameterize the components of this model in the future, in order to be able to construct more realistic user models.
+            \end{pframe}%    
+            \begin{pframe}[.67]
+                \section{Demo}
+                The client emulators in particular will be showcased in the \textsc{demo}.
+                We will demonstrate the workings of the system on a simple LEGO task assistance application, and spectators will be able to follow the replay of the trace as well as the behavior of the user model through the client devices.
+                \medskip
+                \begin{center}
+                    \includegraphics[width=.5\textwidth]{img/lego}%
+                \end{center}
+            \end{pframe}    
         \end{pcolumn}%
         \begin{pcolumn}[3]
-            \begin{pframe}[1.95]
+            \begin{pframe}[2.14]
                 \section{Some Example Results}
                 \begin{center}
                     \medskip
@@ -124,19 +133,23 @@ maxcitenames=2, mincitenames=1]{biblatex}
                     \medskip
                     \includegraphics[width=\linewidth]{plots/comparison/box_nofeedback.pdf}
                     \captionof{subfigure}{Inputs that did not trigger feedback.}
-                    \captionof{figure}{Comparison of the latency distributions across system components for a series of scenarios, differentiated by feedback/lack of feedback.}
+                    \captionof{figure}{Comparison of the latency distributions across system components for a series of scenarios.}
                     \medskip
                 \end{center}
             
-                 These results could be useful for, for instance, system designers wishing to identify bottlenecks across the system hardware stack, or for application developers to determine points of optimization in the application code.
+                 These results could be useful for:
+                 \begin{itemize}
+                     \item System designers wishing to identify bottlenecks in their hardware stack.
+                     In this case, they could determine that the wireless link seems to be the weak point when the connection is not optimal.
+                     \item Application developers who want to find potential for optimization in their applications.
+                 \end{itemize}
             \end{pframe}
-            \begin{pframe}[.24]
-                \itshape
-                \smallskip
+            \begin{pframe}[.17]
+                \medskip\itshape\footnotesize
                 We will eventually make the benchmark suite available as Free and Open Source Software.
                 The traces will also be made available under a Creative Commons License.
             \end{pframe}    
-            \begin{pframe**}[.81]
+            \begin{pframe**}[.69]
                 \nocite{*}
                 \small
                 \printbibliography
