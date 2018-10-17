@@ -54,7 +54,7 @@ mincitenames=1]{biblatex}
     
     \begin{pcolumns}[3]
         \begin{pcolumn}[2]
-            \begin{pframe}[.67]
+            \begin{pframe}[.7]
                 \section{Abstract}
                 Benchmarking human-in-the-loop application running on edge computing infrastructure is complex given their nature, which heavily depends on the actions taken by the \emph{human} user.
                 This limits reproducibility as well as feasibility of performance evaluations.
@@ -63,10 +63,10 @@ mincitenames=1]{biblatex}
                 The traces are exposed to the original backend compute process of the respective human-in-the-loop application, generating realistic feedback.
                 This allows for an automated system which greatly simplifies benchmarking large scale scenarios.
             \end{pframe}
-            \begin{pframe}[1.33]
+            \begin{pframe}[1.3]
                 \section{Basic Idea}
                 \begin{itemize}
-                    \item Benchmarking human-in-the-loop applications is \textbf{hard} due to \emph{human} users:
+                    \item Benchmarking human-in-the-loop applications is \textbf{hard} due to human users:
                     \begin{itemize}
                         \item They are unpredictable.
                         \item They make scaling difficult (you need more of them!).
@@ -76,18 +76,18 @@ mincitenames=1]{biblatex}
                 \medskip
                 \begin{center}
                     \medskip
-                    \includegraphics[width=.8\linewidth]{img/trace_idea_1}
+                    \includegraphics[width=.75\linewidth]{img/trace_idea_1}\\
                     \medskip
-                    \includegraphics{img/trace_idea_arrow}
+                    \includegraphics{img/trace_idea_arrow}\\
                     \medskip
-                    \includegraphics[width=.8\linewidth]{img/trace_idea_2}
-                    \captionof{figure}{Basic idea is to replace the user by a pre-recorded sensory input trace played through a simple user model.}
+                    \includegraphics[width=.75\linewidth]{img/trace_idea_2}
+                    \captionof{figure}{Replace the user by a pre-recorded sensory input trace played through a simple user model.}
                 \end{center}
                 
             \end{pframe}
         \end{pcolumn}%
-        \begin{pcolumn}[3]
-            \begin{pframe}[1.2]
+        \begin{pcolumn}[2]
+            \begin{pframe}[1.52]
                 \section{Design \& Implementation}
                 \begin{center}
                     \medskip
@@ -99,25 +99,25 @@ mincitenames=1]{biblatex}
                     \item The \emph{control backend} controls the experiments and collects measurements from the application and the cloudlet itself.
                     \item The \emph{client emulators} play out a prerecorded sensory input trace over the network in a controlled fashion, while collecting client-side metrics.
                 \end{itemize}
-            \end{pframe}%
-            \begin{pframe}[1.13]
-                \smallskip
+            %\end{pframe}%
+            %\begin{pframe}[1.13]
                 \begin{center}
                     \medskip
                     \input{img/usermodel.tex}
                     \captionof{figure}{Simple user model used for the initial iteration of the suite.}
                     \medskip
                 \end{center}
-                %The trace alone is not enough to sufficiently emulate a human user.
+                
                 We implement a very simple user model in order to be able to react to feedback from the application and adapt our replay of the trace to the current system conditions.
                 %We plan to fully parameterize the components of this model in the future, in order to be able to construct more realistic user models.
             \end{pframe}%    
-            \begin{pframe}[.67]
+            \begin{pframe}[.48]
                 \section{Demo}
                 The client emulators in particular will be showcased in the \textsc{demo}.
                 We will demonstrate the workings of the system on a simple LEGO task assistance application, and spectators will be able to follow the replay of the trace as well as the behavior of the user model through the client devices.
                 \medskip
                 \begin{center}
+                    \medskip
                     \includegraphics[width=.5\textwidth]{img/lego}%
                 \end{center}
             \end{pframe}    
