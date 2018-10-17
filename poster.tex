@@ -14,7 +14,7 @@
 \usepackage{lipsum}
 \usepackage{listings}
 \usepackage{enumitem}
-\usepackage{caption}
+\usepackage[format=hang]{caption}
 \usepackage{subcaption}
 \captionsetup{font=normalsize,labelfont={bf,sf}}
 \captionsetup[sub]{font={small}, textfont={normalfont}, labelfont={bf,sf}}
@@ -76,12 +76,21 @@ mincitenames=1]{biblatex}
                 \medskip
                 \begin{center}
                     \medskip
-                    \includegraphics[width=.75\linewidth]{img/trace_idea_1}\\
-                    \medskip
-                    \includegraphics{img/trace_idea_arrow}\\
-                    \medskip
+                    \makeatletter
+                    \let\theoldfigure=\fnum@figure
+                    \renewcommand{\fnum@figure}{Step~\thefigure}
+                    \makeatother
+                    \includegraphics[width=.75\linewidth]{img/trace_idea_1}
+                    \captionof{figure}{Trace user input while operating the target application.}
+                    
+                    \medskip\medskip
+                    
                     \includegraphics[width=.75\linewidth]{img/trace_idea_2}
-                    \captionof{figure}{Replace the user by a pre-recorded sensory input trace played through a simple user model.}
+                    \captionof{figure}{Replace user with recorded trace plus a user model.}
+                    \makeatletter
+                    \renewcommand{\fnum@figure}{\theoldfigure}
+                    \makeatother
+                    \setcounter{figure}{0}
                 \end{center}
                 
             \end{pframe}
