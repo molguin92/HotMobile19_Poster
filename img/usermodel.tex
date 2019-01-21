@@ -1,27 +1,25 @@
-\adjustbox{scale=0.75}{
-    \ttfamily\small\centering%\fbox{%
+\adjustbox{scale=0.7}{
+    \ttfamily\centering%\fbox{%
     \begin{tikzpicture}[align=center,
-    node distance=5.0cm and 2.0cm,
-    every initial by arrow/.style={-{Latex[length=2mm]}}]
-    % Place nodes              
-    \node [initial, state, minimum size=5em, initial text=] (play) {\textbf{Play}};               
-    \node [state, above right=of play, minimum size=5em] (change) {\textbf{Change}\\\textbf{step}};
-    \node [state, below right=of play, minimum size=5em] (rewind) {\textbf{Rewind}};
-    \node [state, accepting, above right=of rewind, minimum size=5em] (shutdown) {\textbf{Shut}\\\textbf{down}};
-    
-    
-    
-    % Draw edges
-    \path[draw, -{Latex[length=4mm]}]
-    (play) edge [bend right=20] node[left] {Step done} (rewind)
-    edge [bend left=20] node[left] {Got feedback\\(\emph{positive})} (change)
-    edge [out=140,in=220,looseness=6] node[left] {Step\\not done} (play)
-    
-    (change) edge [bend left=20] node[right] {Step\\changed} (play)
-    edge [bend left=20] node[right] {All steps\\done} (shutdown)
-    
-    (rewind) edge [bend right=20] node[right] {Rewound} (play)
-    edge [bend right=20] node[right] {Too many\\rewinds} (shutdown);
-    
+        node distance=5cm and 3cm,
+        every initial by arrow/.style={-{Latex[length=7mm]}}]
+        % Place nodes              
+        \node [initial, state, minimum size=5em, initial text=] (play) {\textbf{Play}};
+        \node [state, above right=of play, minimum size=5em] (change) {\textbf{Change}\\\textbf{step}};
+        \node [state, below right=of play, minimum size=5em] (rewind) {\textbf{Rewind}};
+        \node [state, accepting, above right=of rewind, minimum size=5em] (shutdown) {\textbf{Shut}\\\textbf{down}};
+
+        % Draw edges
+        \path[draw, -{Latex[length=7mm]}, sloped, anchor=center]
+        (play) edge [bend right=20] node[below] {Finished step,\\no feedback\\received} (rewind)
+        edge [bend left=20] node[above] {Received\\feedback} (change)
+        edge [in=140, out=220,looseness=6] node[above] {Step not\\finished} (play)
+
+        (change) edge [bend left=20] node[below] {Step\\changed} (play)
+        edge [bend left=20] node[above] {All steps\\finished} (shutdown)
+
+        (rewind) edge [bend right=20] node[above] {Rewound} (play)
+        edge [bend right=20] node[below] {Too many\\rewinds} (shutdown);
+
     \end{tikzpicture}
 }%}

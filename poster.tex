@@ -46,124 +46,119 @@ mincitenames=1]{biblatex}
 \kthcolor{KTHblue}
 
 \begin{document}
-    
-    \title{\LARGE\bfseries Scaling on the Edge:\\A Benchmarking Suite For Human-in-the-Loop Applications}
-    
-    \author{\Large Manuel Olguín, Junjue Wang,\\Mahadev Satyanarayanan, James Gross}
-    \maketitle
-    
-    \begin{pcolumns}[3]
-        \begin{pcolumn}[2]
-            \begin{pframe}[.7]
-                \section{Abstract}
-                Benchmarking human-in-the-loop applications running on edge computing infrastructure is complex given their nature, which heavily depends on the actions taken by the human user.
-                This limits reproducibility as well as feasibility of performance evaluations.
-                We propose a methodology and present a benchmarking suite that can address these challenges.
-                Our core idea rests on recording traces of these applications which are played out in a controlled fashion based on an underlying model of human behavior.
-                The traces are exposed to the original backend compute process of the respective human-in-the-loop application, generating realistic feedback.
-                This allows for an automated system which greatly simplifies benchmarking large scale scenarios.
-            \end{pframe}
-            \begin{pframe}[1.3]
-                \section{Basic Idea}
-                \begin{itemize}
-                    \item Benchmarking human-in-the-loop applications is \textbf{hard} due to human users:
-                    \begin{itemize}
-                        \item They are unpredictable.
-                        \item They make scaling difficult (you need more of them!).
-                    \end{itemize}
-                    \item What if we could cut out the user?
-                \end{itemize}
+
+\title{\Huge{\bfseries EdgeDroid 1.0}\\\normalfont\LARGE An Experimental Approach to Benchmarking Human-in-the-Loop Applications}
+
+\author{\Large Manuel Olguín, Junjue Wang,\\Mahadev Satyanarayanan, James Gross}
+\maketitle
+
+\begin{pcolumns}[3]
+    \begin{pcolumn}[2]
+        \begin{pframe}[.75]
+            \section{Abstract}
+            Many emerging mobile applications, including augmented reality (AR) and wearable cognitive assistance, aim to provide seamless user interaction.
+            However, the complexity of benchmarking these human-in-the-loop applications limits reproducibility and makes performance evaluation difficult. In this paper, we present EdgeDroid, a benchmarking suite designed to reproducibly evaluate these applications.
+
+            Our core idea rests on recording traces of user interaction, which are then replayed at benchmarking time in a controlled fashion based on an underlying model of human behavior.
+            This allows for an automated system that greatly simplifies benchmarking large scale scenarios and stress testing the application.
+            Our results show the benefits of EdgeDroid as a tool for both system designers and application developers.
+        \end{pframe}
+        \begin{pframe}[1.25]
+            \section{Basic Idea}
+            \begin{itemize}
+                \item Benchmarking human-in-the-loop applications is \textbf{hard} due to human users:
+                      \begin{itemize}
+                          \item They are unpredictable.
+                          \item They make scaling difficult (you need more of them!).
+                      \end{itemize}
+                \item What if we could cut out the user?
+            \end{itemize}
+            \medskip
+            \begin{center}
                 \medskip
-                \begin{center}
-                    \medskip
-                    \makeatletter
-                    \let\theoldfigure=\fnum@figure
-                    \renewcommand{\fnum@figure}{Step~\thefigure}
-                    \makeatother
-                    \includegraphics[width=.75\linewidth]{img/trace_idea_1}
-                    \captionof{figure}{Trace user input while operating the target application.}
-                    
-                    \medskip\medskip
-                    
-                    \includegraphics[width=.75\linewidth]{img/trace_idea_2}
-                    \captionof{figure}{Replace user with recorded trace plus a user model.}
-                    \makeatletter
-                    \renewcommand{\fnum@figure}{\theoldfigure}
-                    \makeatother
-                    \setcounter{figure}{0}
-                \end{center}
-                
-            \end{pframe}
-        \end{pcolumn}%
-        \begin{pcolumn}[2]
-            \begin{pframe}[1.52]
-                \section{Design \& Implementation}
-                \begin{center}
-                    \medskip
-                    \includegraphics[width=.85\linewidth]{img/TraceReplay_GenArch}
-                    \captionof{figure}{Suite Architecture}
-                    \medskip
-                \end{center}
-                \begin{itemize}
-                    \item The \emph{control backend} controls the experiments and collects measurements from the application and the cloudlet itself.
-                    \item The \emph{client emulators} play out a prerecorded sensory input trace over the network in a controlled fashion, while collecting client-side metrics.
-                \end{itemize}
-            %\end{pframe}%
-            %\begin{pframe}[1.13]
-                \begin{center}
-                    \medskip
-                    \input{img/usermodel.tex}
-                    \captionof{figure}{Simple user model used for the initial iteration of the suite.}
-                    \medskip
-                \end{center}
-                
-                We implement a very simple user model in order to be able to react to feedback from the application and adapt our replay of the trace to the current system conditions.
-                %We plan to fully parameterize the components of this model in the future, in order to be able to construct more realistic user models.
-            \end{pframe}%    
-            \begin{pframe}[.48]
-                \section{Demo}
-                The client emulators in particular will be showcased in the \textsc{demo}.
-                We will demonstrate the workings of the system on a simple LEGO task assistance application, and spectators will be able to follow the replay of the trace as well as the behavior of the user model through the client devices.
+                \makeatletter
+                \let\theoldfigure=\fnum@figure
+                \renewcommand{\fnum@figure}{Step~\thefigure}
+                \makeatother
+                \includegraphics[width=.7\linewidth]{img/trace_idea_1}
+                \captionof{figure}{Trace user input while operating the target application.}
+
+                \medskip\medskip
+
+                \includegraphics[width=.7\linewidth]{img/trace_idea_2}
+                \captionof{figure}{Replace user with recorded trace plus a user model.}
+                \makeatletter
+                \renewcommand{\fnum@figure}{\theoldfigure}
+                \makeatother
+                \setcounter{figure}{0}
+            \end{center}
+
+        \end{pframe}
+    \end{pcolumn}%
+    \begin{pcolumn}[2]
+        \begin{pframe}[.9]
+            \section{Design \& Implementation}
+            \begin{center}
                 \medskip
-                \begin{center}
-                    \medskip
-                    \includegraphics[width=.5\textwidth]{img/lego}%
-                \end{center}
-            \end{pframe}    
-        \end{pcolumn}%
-        \begin{pcolumn}[3]
-            \begin{pframe}[2.14]
-                \section{Some Example Results}
-                \begin{center}
-                    \medskip
-                    \includegraphics[width=\linewidth]{plots/comparison/box_legend.pdf}
-                    \includegraphics[width=\linewidth]{plots/comparison/box_feedback.pdf}
-                    \captionof{subfigure}{Inputs that triggered feedback.}
-                    \medskip
-                    \includegraphics[width=\linewidth]{plots/comparison/box_nofeedback.pdf}
-                    \captionof{subfigure}{Inputs that did not trigger feedback.}
-                    \captionof{figure}{Comparison of the latency distributions across system components for a series of scenarios.}
-                    \medskip
-                \end{center}
-            
-                 These results could be useful for:
-                 \begin{itemize}
-                     \item System designers wishing to identify bottlenecks in their hardware stack.
-                     In this case, they could determine that the wireless link seems to be the weak point when the connection is not optimal.
-                     \item Application developers who want to find potential for optimization in their applications.
-                 \end{itemize}
-            \end{pframe}
-            \begin{pframe}[.17]
-                \medskip\itshape\footnotesize
-                We will eventually make the benchmark suite available as Free and Open Source Software.
-                The traces will also be made available under a Creative Commons License.
-            \end{pframe}    
-            \begin{pframe**}[.69]
-                \nocite{*}
-                \small
-                \printbibliography
-            \end{pframe**}
-        \end{pcolumn}
-    \end{pcolumns}
-    
+                \includegraphics[width=.9\linewidth]{img/TraceReplay_GenArch}
+                \captionof{figure}{Suite Architecture}
+                \medskip
+            \end{center}
+            \begin{itemize}
+                \item The \emph{control backend} controls the experiments and collects measurements from the application and the cloudlet itself.
+                Implemented in Python~3.6.
+                \item The \emph{client~emulators} play out a pre-recorded sensory input trace over the network in a controlled fashion, while collecting relevant metrics.
+                Implemented in Java using the Android~SDK.%
+            \end{itemize}
+        \end{pframe}
+        \begin{pframe}[1.1]
+            \section{User Model}
+            \begin{center}
+                \medskip
+                \input{img/usermodel.tex}
+                \captionof{figure}{Model of human interaction.}
+                \medskip
+            \end{center}
+
+            We implement a very simple user model in order to be able to react to feedback from the application and adapt our replay of the trace to the current system conditions.
+            In EdgeDroid 1.0, our model is that of a user who does not suffer any of the shortcomings of real human users such as annoyance, fatigue, frustration, nausea.            
+            In the future, we envision creating  many versions of EdgeDroid (i.e., EdgeDroid 2.0, EdgeDroid 3.0, etc.) that embody more human-like user models that more accurately emulate attributes such as those mentioned above. 
+        \end{pframe}%    
+    \end{pcolumn}%
+    \begin{pcolumn}[2]
+        \begin{pframe}[1.55]
+            \section{Some Example Results}
+            \begin{center}
+                \medskip
+                \includegraphics[width=\linewidth]{plots/comparison/rtt_fb_vs_nofb.pdf}
+                \captionof{subfigure}{Comparison of total RTTs.}
+                \medskip
+                \includegraphics[width=\linewidth]{plots/comparison/box_feedback.pdf}
+                \captionof{subfigure}{RTTs by major pipeline segments.}
+                \includegraphics[width=\linewidth]{plots/comparison/box_taskstep.pdf}
+                \captionof{subfigure}{RTTs by step transition.}
+                \captionof{figure}{Example results for a benchmark of the LEGO application in~\cite{Chen:EarlyImplementation}.}
+                \medskip
+            \end{center}
+
+            These results could be useful for:
+            \begin{itemize}
+                \item System designers wishing to identify bottlenecks in their hardware stack.
+                \item Application developers who want to find potential for optimization.
+            \end{itemize}
+        \end{pframe}
+        \begin{pframe**}[.45]
+            \nocite{*}
+            \footnotesize
+            \printbibliography
+        \end{pframe**}
+    \end{pcolumn}
+\end{pcolumns}
+
 \end{document}
+
+% \begin{pframe}[.17]
+%     \medskip\itshape\footnotesize
+%     We will eventually make the benchmark suite available as Free and Open Source Software.
+%     The traces will also be made available under a Creative Commons License.
+% \end{pframe}
